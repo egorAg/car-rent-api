@@ -40,8 +40,15 @@ export class CarsService {
         HttpStatus.I_AM_A_TEAPOT
       );
 
-    // if (+new Date(data.taken_from) < +new Date() + 259200000)
-    //   throw new HttpException(`Car unavailable`, HttpStatus.BAD_REQUEST);
+    const endOfService = new Date(+new Date(car.taken_for) + 259200000);
+
+    if (!(+endOfService < +new Date()))
+      throw new HttpException(
+        `It's been less than 3 days since the last rental. Car will be available at ${new Date(
+          +new Date(car.taken_for) + 259200000
+        )}`,
+        HttpStatus.CONFLICT
+      );
 
     return await this.rent_success(data);
   }
