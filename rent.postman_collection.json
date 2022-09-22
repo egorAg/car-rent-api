@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "40617033-fa41-45bb-aedb-91385bdc4058",
+		"name": "rent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15214539"
+	},
+	"item": [
+		{
+			"name": "cars",
+			"item": [
+				{
+					"name": "add car to database",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mark\": \"priuss\",\n    \"model\": \"4WD SUKA\",\n    \"gov_number\": \"A111AA23RUS\",\n    \"vin\": \"sdkojsjsdkjjngksd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{transport}}://{{host}}/cars",
+							"protocol": "{{transport}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all cars from bd",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{transport}}://{{host}}/cars",
+							"protocol": "{{transport}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "take for rent",
+			"item": [
+				{
+					"name": "take a car for rent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 5,\n    \"taken_from\": \"2022-09-21T13:57:10.075Z\",\n    \"taken_for\": \"2022-09-26T13:56:10.075Z\",\n    \"km\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{transport}}://{{host}}/cars/take",
+							"protocol": "{{transport}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cars",
+								"take"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reports",
+			"item": [
+				{
+					"name": "get report by mouth to one car",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 3,\n    \"year\": 2022,\n    \"mouth\": 8\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{transport}}://{{host}}/cars/get-report-mouth-by-car",
+							"protocol": "{{transport}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cars",
+								"get-report-mouth-by-car"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get reports by mouth",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"year\": 2022,\n    \"mouth\": 8\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{transport}}://{{host}}/cars/get-all-reports",
+							"protocol": "{{transport}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cars",
+								"get-all-reports"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "transport",
+			"value": "http"
+		},
+		{
+			"key": "host",
+			"value": "localhost:3002"
+		},
+		{
+			"key": "tariff",
+			"value": "0"
+		},
+		{
+			"key": "discount",
+			"value": "1"
+		}
+	]
+}
